@@ -46,7 +46,7 @@ jobs:
 
       - name: Build generic binary
         env:
-          RUSTFLAGS: --target-cpu=generic
+          RUSTFLAGS: -C target-cpu=generic
         run: |
           rustup target add x86_64-pc-windows-msvc
           cargo build
