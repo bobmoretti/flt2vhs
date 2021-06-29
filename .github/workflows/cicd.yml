@@ -30,8 +30,8 @@ jobs:
           command: clippy
           args: -- -D warnings
 
-  build:
-    name: Build
+  build-cross:
+    name: Builds via cross-compiling
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
@@ -54,5 +54,34 @@ jobs:
           rustup target add x86_64-pc-windows-gnu
           cargo build --target x86_64-pc-windows-gnu
 
+  build-windows:
+    name: Builds natively on windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
 
-        
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - name: Build generic win32 binary
+        env:
+          RUSTFLAGS: -C target-cpu=generic
+        run: |
+          rustup target add x86_64-pc-windows-msvc
+          cargo build --target x86_64-pc-windows-msvc
+      - name: Upload binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: MSVC Executables
+          path: |
+            target/debug/*.exe
+            target/debug/*.pdb
+          if-no-files-found: error
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
