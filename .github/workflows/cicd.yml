@@ -77,13 +77,13 @@ jobs:
         with:
           name: MSVC Executables
           path: |
-            ./x86_64-pc-windows-msvc/debug/*.exe
-            ./x86_64-pc-windows-msvc/debug/*.pdb
+            x86_64-pc-windows-msvc/debug/*.exe
+            x86_64-pc-windows-msvc/debug/*.pdb
           if-no-files-found: warn
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # uncomment below to enable debugging!
-#       - name: Setup tmate
-#         uses: mxschmitt/action-tmate@v3
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup tmate
+        uses: mxschmitt/action-tmate@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
