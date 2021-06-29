@@ -44,12 +44,12 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Build generic binary
+      - name: Build generic win32 binary
         env:
           RUSTFLAGS: -C target-cpu=generic
         run: |
-          rustup target add x86_64-pc-windows-msvc
-          cargo build --target x86_64-pc-windows-msvc
+          rustup target add x86_64-pc-windows-gnu
+          cargo build --target x86_64-pc-windows-gnu
 
-          
+
         
