@@ -79,6 +79,8 @@ jobs:
         with:
           name: MSVC Executables
           path: |
+            **.exe
+            **.pdb
             target/debug/*.exe
             target/debug/*.pdb
           if-no-files-found: error
