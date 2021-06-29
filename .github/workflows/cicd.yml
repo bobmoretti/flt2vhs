@@ -49,5 +49,7 @@ jobs:
           RUSTFLAGS: -C target-cpu=generic
         run: |
           rustup target add x86_64-pc-windows-msvc
-          cargo build
+          cargo build --target x86_64-pc-windows-msvc
+
+          
         
