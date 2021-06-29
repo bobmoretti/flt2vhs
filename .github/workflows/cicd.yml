@@ -44,6 +44,9 @@ jobs:
           toolchain: stable
           override: true
 
+      - name: Install mingw
+        run: sudo apt-get install mingw-w64
+
       - name: Build generic win32 binary
         env:
           RUSTFLAGS: -C target-cpu=generic
