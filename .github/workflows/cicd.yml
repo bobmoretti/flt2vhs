@@ -81,7 +81,7 @@ jobs:
             **.pdb
             target/debug/*.exe
             target/debug/*.pdb
-          if-no-files-found: warning
+          if-no-files-found: warn
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup tmate
