@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
   lints:
     name: Lints
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -82,8 +82,8 @@ jobs:
           if-no-files-found: warn
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # uncomment below to enable debugging!
-      - name: Setup tmate
-        uses: mxschmitt/action-tmate@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # uncomment below to enable debugging!
+      # - name: Setup tmate
+      #   uses: mxschmitt/action-tmate@v3
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
