@@ -89,7 +89,7 @@ impl Flight {
         if !entities_to_chuck.is_empty() {
             debug!(
                 "{} entities were never defined with position info, but have {} events",
-                    entities_to_chuck.len(),
+                entities_to_chuck.len(),
                 entities_to_chuck
                     .iter()
                     .fold(0, |acc, (_uid, events)| acc + events)
